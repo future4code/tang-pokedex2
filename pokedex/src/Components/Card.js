@@ -26,14 +26,14 @@ export default function Card(props) {
 
     const history = useHistory()
     const onClickInfo = () => {
-        history.push('/poke-info')
+        history.push(`/poke-info/${props.index}`)
     }
 
     return (
         <MainCard>
             <h3>{props.name}</h3>
             <ImageDiv>
-                <img />
+                <img src={props.img} alt={props.name}/>
             </ImageDiv>
             <ButtonDiv>
                 <Button>Adicionar a Pokedex</Button>

@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import Header from '../Components/Header'
 import styled from 'styled-components'
+import {useParams} from 'react-router-dom'
+import ContextPokemonList from '../Context/ContextPokemonList'
 
 const Content = styled.div`
     display: flex;
@@ -63,33 +65,35 @@ const MoveDiv = styled.div`
 `
 
 export default function Info() {
+    const params = useParams();
+    const list = useContext(ContextPokemonList)
+    const pokemon = list[params.pokemonId] && list[params.pokemonId].data
+    console.log(pokemon)
     return (
         <div>
-            <Header path={'/'} routeButton={'Voltar'} h1={'Pokemon.name'} type={'info'}></Header>
+            <Header path={'/'} routeButton={'Voltar'} h1={pokemon.name} type={'info'}></Header>
             <Content>
                 <ImageSection>
-                    <ImageDiv><img src={''}/>image</ImageDiv>
-                    <ImageDiv><img src={''}/>image</ImageDiv>
+                    <ImageDiv><img src={pokemon.sprites.front_default}/></ImageDiv>
+                    <ImageDiv><img src={pokemon.sprites.back_default}/></ImageDiv>
                 </ImageSection>
                 <Stats>
                     <h2>Stats</h2>
-                    <p>HP:</p>
-                    <p>Attack:</p>
-                    <p>Defense:</p>
-                    <p>Special-Attack:</p>
-                    <p>Special-Defense:</p>
-                    <p>Speed</p>
+                    { pokemon.stats.map(e => {
+                        return <p key={e.stat.name}>{e.stat.name}: {e.base_stat}</p>
+                    })}
                 </Stats>
                 <TypeMoveSection>
                     <TypesDiv>
-                        <Type>type</Type>
-                        <Type>type</Type>
+                        {pokemon.types.map((e,index) => {
+                            return <Type key={index}>{e.type.name}</Type>
+                        })}
                     </TypesDiv>
                     <MoveDiv>
                         <h2>Moves</h2>
-                        <p>Move name 1</p>
-                        <p>Move name 2</p>
-                        <p>Move name 3</p>
+                        {pokemon.moves.map((e,index) => {
+                            return index < 3 ? <p key={index}>{e.move.name}</p> : null  
+                        })}
                     </MoveDiv> 
                 </TypeMoveSection>    
             </Content>
