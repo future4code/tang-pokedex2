@@ -13,7 +13,9 @@ const Content = styled.div `
 export default function Home() {
 
     
-const list = useContext(ContextPokemonList)
+const {list, setList} = useContext(ContextPokemonList)
+
+const sortedArray = list.sort((a, b) => { return a.data.id - b.data.id})
 console.log(list)
 
 
@@ -22,15 +24,17 @@ console.log(list)
             <Header 
                 routeButton={'Ir para Pokedex'}
                 path={'/pokedex'}
-                h1={'Lista de Pokemons'}
+                name={'Lista de Pokemons'}
             />
             <Content>
-                {list[0] ? list.map((e, index) => {
+                {sortedArray[0] ? sortedArray.map((e, index) => {
                     return <Card 
-                                index={index}
+                                id={e.data.id}
                                 key={e.data.id}
                                 name={e.data.name}
                                 img={e.data.sprites.front_default}
+                                pokemon={e}
+                                buttonText={"Adicionar à Pokedex"}
                             />
                 }) : <div>Loading...</div>}
             </Content>
