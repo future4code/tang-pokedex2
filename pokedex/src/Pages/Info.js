@@ -10,6 +10,19 @@ const Content = styled.div`
     justify-content: center;
     margin: 16px;
     height: 80vh;
+    font-size:0.9em;
+
+    @media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {
+
+    flex-direction:column;
+    justify-content: normal;
+    div {
+      margin: 8px 0
+    }
+}
 `
 
 const ImageSection = styled.div`
@@ -21,17 +34,32 @@ const ImageSection = styled.div`
     justify-content: space-between;
 ` 
 const ImageDiv = styled.div`
-    background-color: lightgray;
+    background-color: whitesmoke;
     height: 25vh;
+    box-shadow: inset 2px 2px black, 2px 2px black, 10px 10px  5px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      height: 150px;
+      width: 150px;
+      background: linear-gradient( rgba(255,0,0,0.2)  48%,rgba(0,0,0,0.2) 2%, rgba(255,255,255,0.2) 50%);
+      border-radius: 50%;
+      border: 2px solid rgba(0,0,0,0.2);
+      box-shadow: 5px 5px 4px rgba(255,255,255,0.2);
+    }
+
 ` 
 const Stats = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: lightgray;
+    background-color: whitesmoke;
     height: 75%;
     width: 300px;
     margin: 0 16px;
     text-align: left;
+    box-shadow: inset 2px 2px black, 2px 2px black, 10px 10px  5px black;
 
     h2 {
         text-align: center;
@@ -53,7 +81,9 @@ const TypeMoveSection = styled.div`
 const TypesDiv = styled.div`
     display: flex;
     justify-content: space-around;
-    background-color: lightgray;
+    align-items: center;
+    background-color: whitesmoke;
+    
 
     .normal {
       background-color: #b3966c;
@@ -141,15 +171,19 @@ const TypesDiv = styled.div`
       background-color: #5a504f;
       color: white;
     }
-
+    box-shadow: inset 2px 2px black, 2px 2px black, 10px 10px  5px black;
 ` 
 const Type = styled.div`
+    box-shadow: inset 2px 2px black, 2px 2px black, 3px 3px white;
+    width: 6em;
+    text-align:center;
 ` 
 
 const MoveDiv = styled.div`
     display: flex;
     flex-direction: column;
-    background-color: lightgray;
+    background-color: whitesmoke;
+    box-shadow: inset 2px 2px black, 2px 2px black, 10px 10px  5px black;
 `
 
 export default function Info() {
@@ -188,7 +222,7 @@ export default function Info() {
             type={'info'}
             pokemon={!listData[0] ? pokedexData[0] : listData[0]}
             id={pokemon.id}
-            name={params.pokemonId}
+            name={params.pokemonId.toUpperCase()}
             buttonText={!listData[0]? "Remover da Pokedex" : "Adicionar à Pokedex"}
             ></Header>
             <Content>
@@ -204,8 +238,9 @@ export default function Info() {
                 </Stats>
                 <TypeMoveSection>
                     <TypesDiv>
+                      <h2>Type</h2>
                         {pokemon.types.map((e,index) => {
-                            return <Type key={index} className={e.type.name}>{e.type.name}</Type>
+                            return <Type key={index} className={e.type.name}><p>{e.type.name}</p></Type>
                         })}
                     </TypesDiv>
                     <MoveDiv>

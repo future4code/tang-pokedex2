@@ -5,13 +5,54 @@ import GlobalStateContext from '../Global/GlobalStateContext'
 
 
 const HeaderMain = styled.div`
+    font-family: 'Ketchum';
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: red;
+    background-color: #9D0101;
     padding: 0 1em 0;
-`
+    box-shadow: inset 2px 2px black, 2px 2px black;
+    
+    .mobile {
+        display: none;
+    }
 
+    @media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) { 
+      flex-direction: column;
+      .mobile {
+        display: block;
+      }
+      .addToPokedex {
+          display: block;
+      }
+  }
+
+    h1 {
+        font-size: 3em;
+        color: #fbd743;
+        text-shadow: 3px 3px black;
+        flex-grow: 100;
+    }
+`
+const Button = styled.button `
+    width: 150px;
+    font-family: 'Pokemon8bit';
+    border: none;
+    padding: 0.8em;
+    box-shadow: inset 2px 2px black, 2px 2px black;
+    font-size: x-small;
+    @media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) { 
+      
+      display: none;
+  }
+
+`
 export default function Header(props) {
 
 
@@ -49,9 +90,10 @@ export default function Header(props) {
 
     return (
         <HeaderMain>
-            <button onClick={onClickButton}>{props.routeButton}</button>
+            <Button onClick={onClickButton}>{props.routeButton}</Button>
             <h1>{props.name}</h1>
-            {props.type === 'info'? <button onClick={addToPokedex}>{props.buttonText}</button> : <div></div>}
+            {props.type === 'info'? <Button  className={'addToPokedex'} onClick={addToPokedex}>{props.buttonText}</Button> : <div></div>}
+            <Button className={'mobile'} onClick={onClickButton}>{props.routeButton}</Button>
         </HeaderMain>
     )
 }

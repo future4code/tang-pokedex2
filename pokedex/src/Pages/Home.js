@@ -22,7 +22,7 @@ console.log(list)
     return (
         <div>
             <Header 
-                routeButton={'Ir para Pokedex'}
+                routeButton={'Abrir Pokédex'}
                 path={'/pokedex'}
                 name={'Lista de Pokemons'}
             />
@@ -34,7 +34,7 @@ console.log(list)
                                 name={e.data.name}
                                 img={e.data.sprites.front_default}
                                 pokemon={e}
-                                buttonText={"Adicionar à Pokedex"}
+                                buttonText={"Adicionar à Pokédex"}
                             />
                 }) : <div>Loading...</div>}
             </Content>
