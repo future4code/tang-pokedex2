@@ -17,7 +17,7 @@ export default function Router() {
                         <Pokedex />
                     </Route>
                     
-                    <Route exact path={"/poke-info"}>
+                    <Route exact path={"/poke-info/:pokemonId"}>
                         <Info />
                     </Route>
 

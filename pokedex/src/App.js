@@ -1,10 +1,14 @@
 import Router from './Pages/Router'
 import './App.css';
+import GlobalState from './Global/GlobalState'
 
 function App() {
+
   return (
     <div className="App">
-     <Router/>
+        <GlobalState>
+        <Router/>
+        </GlobalState>
     </div>
   );
 }

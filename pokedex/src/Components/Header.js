@@ -1,6 +1,8 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {useHistory} from 'react-router-dom'
 import styled from 'styled-components'
+import GlobalStateContext from '../Global/GlobalStateContext'
+
 
 const HeaderMain = styled.div`
     display: flex;
@@ -11,17 +13,45 @@ const HeaderMain = styled.div`
 `
 
 export default function Header(props) {
-    
+
+
     const history = useHistory();
-    const onClickButton = () => {
-        history.push(props.path)
+    const onClickButton = () => { 
+        if (props.path === "goBack") {
+            history.goBack()
+        } else { history.push(props.path) }
+    }
+ 
+    const {list, setList, pokedex, setPokedex} = useContext(GlobalStateContext)
+    
+    if (!list[0] && !pokedex[0]) {
+        return <div> Loading</div>
+    }
+    
+    
+    const addToPokedex = () => {
+        const position = pokedex.findIndex((e) => e.data.id === props.id)
+        if(position === -1) {
+            setPokedex([...pokedex, props.pokemon])
+            const newArray = list.filter(e => {
+                return e.data.id !== props.id
+            })
+            setList(newArray)
+        } else {
+            setList([...list, props.pokemon])
+            const newArray = pokedex.filter(e => {
+                return e.data.id !== props.id
+            })
+            setPokedex(newArray)
+        }
+        console.log(pokedex)
     }
 
     return (
         <HeaderMain>
             <button onClick={onClickButton}>{props.routeButton}</button>
-            <h1>{props.h1}</h1>
-            {props.type === 'info'? <button>Adicionar/Remover da Pokedex</button> : <div></div>}
+            <h1>{props.name}</h1>
+            {props.type === 'info'? <button onClick={addToPokedex}>{props.buttonText}</button> : <div></div>}
         </HeaderMain>
     )
 }
