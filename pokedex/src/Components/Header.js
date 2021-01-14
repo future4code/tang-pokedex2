@@ -1,8 +1,7 @@
 import React, {useContext} from 'react'
 import {useHistory} from 'react-router-dom'
 import styled from 'styled-components'
-import ContextPokedex from '../Context/ContextPokedex'
-import ContextPokemonList from '../Context/ContextPokemonList'
+import GlobalStateContext from '../Global/GlobalStateContext'
 
 
 const HeaderMain = styled.div`
@@ -22,9 +21,9 @@ export default function Header(props) {
             history.goBack()
         } else { history.push(props.path) }
     }
-
-    const {pokedex, setPokedex} = useContext(ContextPokedex)
-    const {list, setList} = useContext(ContextPokemonList)    
+ 
+    const {list, setList, pokedex, setPokedex} = useContext(GlobalStateContext)
+    
     if (!list[0] && !pokedex[0]) {
         return <div> Loading</div>
     }

@@ -1,10 +1,10 @@
 import React, {useContext} from 'react'
 import Header from '../Components/Header'
-import ContextPokedex from '../Context/ContextPokedex'
 import Card from '../Components/Card'
+import GlobalStateContext from '../Global/GlobalStateContext'
 
 export default function Pokedex() {
-    const {pokedex , setPokedex} = useContext(ContextPokedex)
+    const {list, setList, pokedex, setPokedex} = useContext(GlobalStateContext)
 
     if (pokedex === undefined) {
         return <div> Loading...</div>

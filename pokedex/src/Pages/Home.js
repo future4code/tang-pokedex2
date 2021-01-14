@@ -1,7 +1,7 @@
 import React, {useContext, useEffect} from 'react'
 import Header from '../Components/Header'
 import Card from '../Components/Card'
-import ContextPokemonList from '../Context/ContextPokemonList'
+import GlobalStateContext from '../Global/GlobalStateContext'
 import styled from 'styled-components'
 
 const Content = styled.div `
@@ -13,7 +13,7 @@ const Content = styled.div `
 export default function Home() {
 
     
-const {list, setList} = useContext(ContextPokemonList)
+const {list, setList} = useContext(GlobalStateContext)
 
 const sortedArray = list.sort((a, b) => { return a.data.id - b.data.id})
 console.log(list)

@@ -2,8 +2,7 @@ import React, {useContext} from 'react'
 import Header from '../Components/Header'
 import styled from 'styled-components'
 import {useParams} from 'react-router-dom'
-import ContextPokemonList from '../Context/ContextPokemonList'
-import ContextPokedex from '../Context/ContextPokedex'
+import GlobalStateContext from '../Global/GlobalStateContext'
 
 const Content = styled.div`
     display: flex;
@@ -155,8 +154,7 @@ const MoveDiv = styled.div`
 
 export default function Info() {
     const params = useParams();
-    const {list} = useContext(ContextPokemonList)
-    const {pokedex} = useContext(ContextPokedex)
+    const { list, setList, pokedex, setPokedex} = useContext(GlobalStateContext)
 
 
     const listData = list.filter(e => {

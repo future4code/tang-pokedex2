@@ -1,8 +1,7 @@
 import React, {useContext} from 'react'
 import styled from 'styled-components'
 import {useHistory} from 'react-router-dom'
-import ContextPokedex from '../Context/ContextPokedex'
-import ContextPokemonList from '../Context/ContextPokemonList'
+import GlobalStateContext from '../Global/GlobalStateContext'
 
 
     const MainCard = styled.div`
@@ -27,8 +26,7 @@ import ContextPokemonList from '../Context/ContextPokemonList'
     `
 export default function Card(props) {
 
-    const {pokedex, setPokedex} = useContext(ContextPokedex)
-    const {list, setList} = useContext(ContextPokemonList)
+    const {list, setList, pokedex, setPokedex} = useContext(GlobalStateContext)
 
     const history = useHistory()
     const onClickInfo = () => {
