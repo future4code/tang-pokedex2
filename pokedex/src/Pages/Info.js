@@ -40,15 +40,41 @@ const ImageDiv = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+        img {
+            padding: 1em;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
 
-    img {
-      height: 150px;
-      width: 150px;
-      background: linear-gradient( rgba(255,0,0,0.2)  48%,rgba(0,0,0,0.2) 2%, rgba(255,255,255,0.2) 50%);
-      border-radius: 50%;
-      border: 2px solid rgba(0,0,0,0.2);
-      box-shadow: 5px 5px 4px rgba(255,255,255,0.2);
-    }
+        div {
+            margin: auto;
+            width: 10em;
+            height: 10em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient( rgba(255,0,0,0.2) 48%,rgba(0,0,0,0.2) 2%,rgba(255,255,255,0.2) 50%);
+            border-radius: 50%;
+            border: 2px solid rgba(0,0,0,0.2);
+            box-shadow: 5px 5px 4px rgba(255,255,255,0.2);
+        }
+        
+        :hover{
+            div{
+            -webkit-animation: rotate-center 0.6s ease-in-out both;
+	        animation: rotate-center 0.6s ease-in-out both;
+            }
+
+            img {
+                -webkit-animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+                animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+                top: 14%;
+                left: 29%;
+            }
+        }
 
 ` 
 const Stats = styled.div`
@@ -227,8 +253,8 @@ export default function Info() {
             ></Header>
             <Content>
                 <ImageSection>
-                    <ImageDiv><img src={pokemon.sprites.front_default}/></ImageDiv>
-                    <ImageDiv><img src={pokemon.sprites.back_default}/></ImageDiv>
+                    <ImageDiv><div></div><img src={pokemon.sprites.front_default}/></ImageDiv>
+                    <ImageDiv><div></div><img src={pokemon.sprites.back_default}/></ImageDiv>
                 </ImageSection>
                 <Stats>
                     <h2>Stats</h2>

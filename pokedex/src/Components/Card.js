@@ -63,6 +63,7 @@ import GlobalStateContext from '../Global/GlobalStateContext'
         font-size: 0.6em;
         border: none;
         box-shadow: inset 2px 2px black, 2px 2px black, 3px 3px white;
+        cursor: pointer;
     `
 export default function Card(props) {
 

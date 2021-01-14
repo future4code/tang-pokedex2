@@ -38,12 +38,14 @@ const HeaderMain = styled.div`
     }
 `
 const Button = styled.button `
+    cursor: pointer;
     width: 150px;
     font-family: 'Pokemon8bit';
     border: none;
     padding: 0.8em;
     box-shadow: inset 2px 2px black, 2px 2px black;
     font-size: x-small;
+    
     @media only screen 
   and (min-device-width: 320px) 
   and (max-device-width: 480px)
