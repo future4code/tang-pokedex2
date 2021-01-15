@@ -3,7 +3,7 @@ import Header from '../Components/Header'
 import Card from '../Components/Card'
 import GlobalStateContext from '../Global/GlobalStateContext'
 import styled from 'styled-components'
-
+import Loading from "../Components/Loading"
 
 const Content = styled.div `
      display: flex;
@@ -16,7 +16,7 @@ export default function Pokedex() {
     const {list, setList, pokedex, setPokedex} = useContext(GlobalStateContext)
 
     if (pokedex === undefined) {
-        return <div> Loading...</div>
+        return <Loading/>
     }
     return (
         <div>

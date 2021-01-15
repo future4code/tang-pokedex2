@@ -68,7 +68,9 @@ export default function Header(props) {
     const {list, setList, pokedex, setPokedex, offset, setOffset} = useContext(GlobalStateContext)
     
     if (!list[0] && !pokedex[0]) {
-        return <div> Loading</div>
+        return <HeaderMain>
+                    <h1>Loading...</h1>
+                </HeaderMain>
     }
     
     

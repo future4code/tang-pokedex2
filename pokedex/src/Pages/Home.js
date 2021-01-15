@@ -5,6 +5,7 @@ import GlobalStateContext from '../Global/GlobalStateContext'
 import styled from 'styled-components'
 import Pokedex from './Pokedex'
 import arrowLeft from '../img/arrowLeft.svg'
+import Loading from "../Components/Loading"
 
 const Content = styled.div `
     display: flex;
@@ -104,7 +105,7 @@ const renderArray = sortedArray.filter((e) => {
             {sortedArray[pokemonsTotal-pokedex.length] ? <Content>
                 
                 {renderArray[0] ? renderArray : <div><br/><br/>Você já adicionou todos os Pokemons desta página à sua Pokédex</div> }
-            </Content> : <div> loading...</div>}
+            </Content> : <Loading/>}
         </div>
     )
 }

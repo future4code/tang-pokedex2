@@ -3,6 +3,7 @@ import Header from '../Components/Header'
 import styled from 'styled-components'
 import {useParams} from 'react-router-dom'
 import GlobalStateContext from '../Global/GlobalStateContext'
+import Loading from "../Components/Loading"
 
 const Content = styled.div`
     display: flex;
@@ -231,7 +232,7 @@ export default function Info() {
     let pokemon = {}
     
     if(!listData[0] && !pokedexData[0]) {
-      return <p>Loading...</p>
+      return <Loading/>
     } else if (!listData[0]) {
       pokemon = pokedexData[0].data
     } else if (!pokedexData[0]) {
