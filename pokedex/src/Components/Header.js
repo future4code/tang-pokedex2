@@ -33,7 +33,7 @@ const HeaderMain = styled.div`
     h1 {
         font-size: 3em;
         color: #fbd743;
-        text-shadow: 3px 3px black;
+        text-shadow: 3px 3px royalblue;
         flex-grow: 100;
     }
 `
@@ -45,7 +45,7 @@ const Button = styled.button `
     padding: 0.8em;
     box-shadow: inset 2px 2px black, 2px 2px black;
     font-size: x-small;
-    
+
     @media only screen 
   and (min-device-width: 320px) 
   and (max-device-width: 480px)
@@ -65,7 +65,7 @@ export default function Header(props) {
         } else { history.push(props.path) }
     }
  
-    const {list, setList, pokedex, setPokedex} = useContext(GlobalStateContext)
+    const {list, setList, pokedex, setPokedex, offset, setOffset} = useContext(GlobalStateContext)
     
     if (!list[0] && !pokedex[0]) {
         return <div> Loading</div>
@@ -76,6 +76,7 @@ export default function Header(props) {
         const position = pokedex.findIndex((e) => e.data.id === props.id)
         if(position === -1) {
             setPokedex([...pokedex, props.pokemon])
+           
             const newArray = list.filter(e => {
                 return e.data.id !== props.id
             })

@@ -67,7 +67,7 @@ import GlobalStateContext from '../Global/GlobalStateContext'
     `
 export default function Card(props) {
 
-    const {list, setList, pokedex, setPokedex} = useContext(GlobalStateContext)
+    const {list, setList, pokedex, setPokedex, offset, setOffset} = useContext(GlobalStateContext)
 
     const history = useHistory()
     const onClickInfo = () => {
@@ -82,12 +82,14 @@ export default function Card(props) {
         console.log(position)
         if(position === -1) {
             setPokedex([...pokedex, props.pokemon])
+            
             const newArray = list.filter(e => {
                 return e.data.id !== props.id
             })
             setList(newArray)
         } else {
             setList([...list, props.pokemon])
+            
             const newArray = pokedex.filter(e => {
                 return e.data.id !== props.id
             })
