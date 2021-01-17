@@ -12,5 +12,5 @@ O que funciona:
 - Paginação
 
 O que não funciona: 
-- Se atualizar a página de Informações do Pokemon não aparece nada, os dados dependem da renderização da Home, que não salvei no LocalStorage.
+- Se atualizar a página de Informações do Pokemon não aparece nada, os dados dependem da renderização da Home e não salvei no LocalStorage.
 
