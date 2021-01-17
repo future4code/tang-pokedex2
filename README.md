@@ -1,16 +1,15 @@
 # POKEDEX
 
 Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+- David Biolchini de Mello
 
-Link do Surge: www.link.com.br
+Link do Surge: shivering-exchange.surge.sh
 
 O que funciona:
-- Item 1
-- Item 2
+- Adicionar/Remover da Pokedex por todos os lugares
+- Comparar
+- Responsividade
+- Paginação
 
 O que não funciona: 
-- Item 3
-- Item 4
+- Parece estar tudo funcionando
