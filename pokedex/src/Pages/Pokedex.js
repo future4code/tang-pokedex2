@@ -4,6 +4,7 @@ import Card from '../Components/Card'
 import GlobalStateContext from '../Global/GlobalStateContext'
 import styled from 'styled-components'
 import Loading from "../Components/Loading"
+import CompareComponent from '../Components/CompareComponent'
 
 const Content = styled.div `
      display: flex;
@@ -33,6 +34,7 @@ export default function Pokedex() {
                             />
                 })}
             </Content>
+            <CompareComponent/>
         </div>
     )
 }

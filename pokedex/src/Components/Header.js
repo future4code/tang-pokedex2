@@ -90,7 +90,6 @@ export default function Header(props) {
             })
             setPokedex(newArray)
         }
-        console.log(pokedex)
     }
 
     return (

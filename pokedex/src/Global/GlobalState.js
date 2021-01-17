@@ -9,6 +9,8 @@ export default function GlobalState(props) {
     const [list, setList] = useState([])
     const [pokedex, setPokedex] = useState([])
     const [offset, setOffset] = useState(0)
+    const [compare, setCompare] = useState([])
+    const [pokemonsTotal, setPokemonsTotal] = useState(19);
     const pokemonData = useRequestData(` https://pokeapi.co/api/v2/pokemon?limit=20&offset=${offset}"`,{})
     
   
@@ -18,8 +20,6 @@ export default function GlobalState(props) {
       
             const positionOnList = list.findIndex((item) => item.data.name === e.name)
             const positionOnPokedex = pokedex.findIndex((item) => item.data.name === e.name)
-
-            console.log(positionOnList, positionOnPokedex)
             if (positionOnList === -1 && positionOnPokedex === -1) {
               axios.get(`https://pokeapi.co/api/v2/pokemon/${e.name}`).then((response) => {
                 setList( arr => [...arr, response])           
@@ -31,7 +31,7 @@ export default function GlobalState(props) {
 
     
     return (
-        <GlobalStateContext.Provider value={{ list, setList, pokedex, setPokedex, offset, setOffset}}>
+        <GlobalStateContext.Provider value={{ list, setList, pokedex, setPokedex, offset, setOffset, compare, setCompare, pokemonsTotal, setPokemonsTotal}}>
             {props.children}
         </GlobalStateContext.Provider>
     )

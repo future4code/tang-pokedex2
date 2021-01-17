@@ -5,13 +5,18 @@ import GlobalStateContext from '../Global/GlobalStateContext'
 
 
     const MainCard = styled.div`
-        background-color: whitesmoke;
+        
         width: 250px;
         display: flex;
         flex-direction: column;
         margin: 16px 16px;
         text-shadow: 2px 2px 3px lightsteelblue;
         box-shadow: inset 2px 2px black, 2px 2px black, 10px 10px  5px black;
+        background: linear-gradient( #e1e3f5 2%, white 98%);
+
+        :hover {
+            background: whitesmoke;
+        }
     `
 
     const ButtonDiv = styled.div`
@@ -37,9 +42,9 @@ import GlobalStateContext from '../Global/GlobalStateContext'
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient( rgba(255,0,0,0.2) 48%,rgba(0,0,0,0.2) 2%,rgba(255,255,255,0.2) 50%);
+            background: linear-gradient( rgba(255,0,0,0.2) 48%,rgba(0,0,0,0.5) 2%,rgba(255,255,255,0.2) 50%);
             border-radius: 50%;
-            border: 2px solid rgba(0,0,0,0.2);
+            border: 2px solid rgba(0,0,0,0.5);
             box-shadow: 5px 5px 4px rgba(255,255,255,0.2);
         }
         
@@ -64,10 +69,28 @@ import GlobalStateContext from '../Global/GlobalStateContext'
         border: none;
         box-shadow: inset 2px 2px black, 2px 2px black, 3px 3px white;
         cursor: pointer;
+
+        :hover {
+            background-color: white;
+        }
+
+        
+    `
+    const CompareButton  = styled.button `
+        margin: 0 17px 6px;
+        font-family: 'Pokemon8bit';
+        font-size: 0.6em;
+        border: none;
+        box-shadow: inset 2px 2px black, 2px 2px black, 3px 3px white;
+        cursor: pointer;
+
+        :hover {
+            background-color: white;
+        }
     `
 export default function Card(props) {
 
-    const {list, setList, pokedex, setPokedex, offset, setOffset} = useContext(GlobalStateContext)
+    const {list, setList, pokedex, setPokedex, offset, setOffset, compare, setCompare} = useContext(GlobalStateContext)
 
     const history = useHistory()
     const onClickInfo = () => {
@@ -78,8 +101,6 @@ export default function Card(props) {
 
     const addToPokedex = () => {
         const position = pokedex.findIndex((e) => e.data.id === props.id)
-        console.log(props.id)
-        console.log(position)
         if(position === -1) {
             setPokedex([...pokedex, props.pokemon])
             
@@ -98,6 +119,12 @@ export default function Card(props) {
        
     }
 
+    const onClickCompare = () => {
+        if(compare.length < 2 ) {
+            setCompare([...compare, props.pokemon])
+        }
+    }
+
 
 
     return (
@@ -112,6 +139,7 @@ export default function Card(props) {
                 <Button onClick={addToPokedex}>{props.buttonText}</Button>
                 <Button onClick={onClickInfo}>Ver informações</Button>
             </ButtonDiv>
+            <CompareButton onClick={onClickCompare}>Comparar</CompareButton>
         </MainCard>
     )
 }

@@ -4,6 +4,11 @@ import styled from 'styled-components'
 import {useParams} from 'react-router-dom'
 import GlobalStateContext from '../Global/GlobalStateContext'
 import Loading from "../Components/Loading"
+import CompareComponent from '../Components/CompareComponent'
+
+const MainDiv = styled.div `
+    margin-bottom: 200px;
+`
 
 const Content = styled.div`
     display: flex;
@@ -242,7 +247,7 @@ export default function Info() {
 
 
     return (
-        <div>
+        <MainDiv>
             <Header 
             path={'goBack'} 
             routeButton={'Voltar'} 
@@ -278,6 +283,7 @@ export default function Info() {
                     </MoveDiv> 
                 </TypeMoveSection>    
             </Content>
-        </div>
+            <CompareComponent/>
+        </MainDiv>
     )
 }

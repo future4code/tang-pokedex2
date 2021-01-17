@@ -6,6 +6,12 @@ import styled from 'styled-components'
 import Pokedex from './Pokedex'
 import arrowLeft from '../img/arrowLeft.svg'
 import Loading from "../Components/Loading"
+import CompareComponent from '../Components/CompareComponent'
+
+
+const MainDiv = styled.div `
+    margin-bottom: 200px;
+`
 
 const Content = styled.div `
     display: flex;
@@ -22,17 +28,16 @@ const Icon = styled.img `
     margin:1em 2em;
     width: 2em;
     height: 2em;
+    cursor: pointer;
 `
 export default function Home() {
 
         
-    const {list, setList, pokedex, setPokedex,offset, setOffset} = useContext(GlobalStateContext)
+    const {list, setList, pokedex, setPokedex,offset, setOffset, pokemonsTotal, setPokemonsTotal} = useContext(GlobalStateContext)
 
     const sortedArray = list.sort((a, b) => { return a.data.id - b.data.id})
 
-
     const [isMount, setIsMount] = useState(true);
-    const [pokemonsTotal, setPokemonsTotal] = useState(offset);
     useEffect(()=>{
             if(isMount){
                 setIsMount(false);
@@ -49,28 +54,21 @@ export default function Home() {
     const nextPage = () => {
         if ( offset <= 1000) {
             setOffset(offset+20)
-            console.log(offset)
         }
 
-            if (pokemonsTotal <= offset ) {
+            if (pokemonsTotal <= offset+19 ) {
                 setPokemonsTotal(pokemonsTotal+20)
             }
-            console.log(pokemonsTotal)
     }
     const lastPage = () => {
         if(offset > 0) {
             setOffset(offset-20)
-            console.log(offset)
+
         }
-        // if (!renderArray[0]) {lastPage()}
+
     }
 
-    // offset = 0 
-    //total = 80
-    // pokedex.length = 20
-    // sortedarray.length = 60
-    //pag4
-    //      total - pokedex.lenght = 60
+
 
 const renderArray = sortedArray.filter((e) => {
     if(e.data.id >offset && e.data.id <=offset+20) {
@@ -90,7 +88,7 @@ const renderArray = sortedArray.filter((e) => {
 
 
     return (
-        <div>
+        <MainDiv>
             <Header 
                 routeButton={'Abrir Pokédex'}
                 path={'/pokedex'}
@@ -106,6 +104,7 @@ const renderArray = sortedArray.filter((e) => {
                 
                 {renderArray[0] ? renderArray : <div><br/><br/>Você já adicionou todos os Pokemons desta página à sua Pokédex</div> }
             </Content> : <Loading/>}
-        </div>
+            <CompareComponent></CompareComponent>
+        </MainDiv>
     )
 }
