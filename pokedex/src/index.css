@@ -1,0 +1,184 @@
+body {
+  margin: 0;
+  font-family: 'Pokemon8bit',-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #CC0000;
+}
+
+
+/**
+ * ----------------------------------------
+ * animation rotate-center
+ * ----------------------------------------
+ */
+
+@-webkit-keyframes rotate-center {
+  0% {
+    box-shadow: 5px 5px 4px rgba(255,255,255,0.2);
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
+  }
+
+  50%{
+    box-shadow: none;
+  }
+  99% {
+    box-shadow: 5px 5px 4px rgba(255,255,255,0.2);
+    -webkit-transform: rotate(363deg);
+            transform: rotate(363deg);
+  }
+  100% {
+    box-shadow: 5px 5px 4px rgba(255,255,255,0.2);
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes rotate-center {
+  0% {
+    box-shadow: 5px 5px 4px rgba(255,255,255,0.2);
+    -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
+  }
+
+  50%{
+    box-shadow: none;
+  }
+  99% {
+    box-shadow: 5px 5px 4px rgba(255,255,255,0.2);
+    -webkit-transform: rotate(363deg);
+            transform: rotate(363deg);
+  }
+  100% {
+    box-shadow: 5px 5px 4px rgba(255,255,255,0.2);
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+
+@-webkit-keyframes rotate-center-loading {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+            box-shadow: 5px 5px 4px rgba(255,255,255,0.2);
+  }
+
+  50%{
+    box-shadow: none;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+            box-shadow: 5px 5px 4px rgba(255,255,255,0.2);
+  }
+}
+@keyframes rotate-center-loading {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+            box-shadow: 5px 5px 4px rgba(255,255,255,0.2);
+  }
+
+  50%{
+    box-shadow: none;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+            box-shadow: 5px 5px 4px rgba(255,255,255,0.2);
+  }
+}
+
+/**
+ * ----------------------------------------
+ * animation scale-up-center
+ * ----------------------------------------
+ */
+ @-webkit-keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.95);
+  }
+  99% {
+    -webkit-transform: scale(1.53);
+            transform: scale(1.53);
+  }
+  100% {
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+  }
+}
+@keyframes scale-up-center {
+  0% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.95);
+  }
+  99% {
+    -webkit-transform: scale(1.53);
+            transform: scale(1.53);
+  }
+  100% {
+    -webkit-transform: scale(1.5);
+            transform: scale(1.5);
+  }
+}
+
+@-webkit-keyframes scale-up-center-loading {
+  0% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+  }
+
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+  }
+}
+@keyframes scale-up-center-loading {
+  0% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+  }
+
+  50% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  100% {
+    -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+  }
+}
+
+
+@font-face {
+  font-family: 'Pokemon8bit';
+  src: local('Pokemon8bit'), url(./fonts/Pokemon8bit/PokemonClassic.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'PokemonLogoBlack';
+  src: local('PokemonLogo'), url(./fonts/PokemonLogo/PokemonLogoBlack.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'PokemonLogoHollow';
+  src: local('PokemonLogoHollow'), url(./fonts/PokemonLogo/PokemonLogoHollow.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Ketchum';
+  src: local('PokemonLogo'), url(./fonts/PokemonLogo/Ketchum.otf) format('truetype');
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
